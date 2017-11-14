@@ -11,6 +11,7 @@ import com.br.capitalcoding.model.Task;
 import com.br.capitalcoding.model.Walker;
 import com.br.capitalcoding.scripts.BasicFighter;
 import com.br.capitalcoding.scripts.MockWalker;
+import com.br.capitalcoding.scripts.Shearer;
 import com.br.capitalcoding.scripts.StrongholdFighter;
 import com.br.capitalcoding.task.impl.combat.EatFood;
 import com.br.capitalcoding.task.manager.TaskManager;
@@ -18,7 +19,7 @@ import com.br.capitalcoding.task.types.GameTask;
 import com.br.capitalcoding.util.Timer;
 import com.br.capitalcoding.util.Utils;
 
-@ScriptManifest(author = "Digdig18", info = "A Basic fighter",name = "Stronghold Fighter", version = 1.0, logo = "")
+@ScriptManifest(author = "CapitalCoding", info = "Shearer",name = "A basic f2p script", version = 1.0, logo = "")
 
 public class BotScope extends Script {
 	private static BotScope context;
@@ -38,32 +39,15 @@ public class BotScope extends Script {
 	public void onStart() throws InterruptedException {
 		context = this;
 		setWalker(new Walker(this));
-		decision();
-		//int price = Utils.getPrice(1947).get();
-		//item = new Item(1947, 1, price);
+		log("-----------------------------------------------------------------------------------------------------");
+		Task task = new Shearer();
+		BotScope.TASK = task;
+		TaskManager.submit(task);		
 	}
 	@Override
 	public int onLoop() throws InterruptedException {
 		TaskManager.sequence();
 		return Utils.random((Configuration.BOT_EXECUTION_SPEED - 300), Configuration.BOT_EXECUTION_SPEED);
-	}
-
-	private void decision() {	
-		log("-----------------------------------------------------------------------------------------------------");
-		//Task task = new WeatherPicker();
-		GameTask task = new StrongholdFighter();
-		//task.setTaskState(TaskState.BANKING);
-		//Task task = new StrongholdDialogue();
-		//Task task = new StrongholdPath();
-		//Task task = new BasicFighter(myPlayer().getArea(10));
-		//Task task = new Restock(Banks.EDGEVILLE);
-		//Task task = new DropWatcher("Bones");
-		//Task task = new MockWalker();
-		BotScope.TASK = task;
-		TaskManager.submit(task);	
-		TaskManager.submit(new EatFood(45));	
-		//message("Area:"+StrongholdAreas.FAMINE.getNpcLocations().get("Flesh Crawler"));
-		
 	}
 
 	public static void message(String str) {
@@ -75,7 +59,6 @@ public class BotScope extends Script {
 	g.setColor(Color.RED);
 	g.drawString("Time Ran: " + BotScope.runtimer.toElapsedString(), 20, 40);
 	g.drawString("Times in Bank: "+timesInBank, 20, 60);
-   // g.drawString("Amount per hour: "+ df.format( (item.getTotalGpGained() / 1000)) + " k", 20, 80);
 	}
 	public static Walker getWalker() {
 		return walker;
