@@ -31,7 +31,6 @@ import javax.swing.border.LineBorder;
 import java.awt.Button;
 import java.awt.Font;
 import javax.swing.JRadioButton;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Choice;
 import java.awt.Label;
 
@@ -48,7 +47,7 @@ public class Gui {
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceRavenLookAndFeel");
+        //UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceRavenLookAndFeel");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
