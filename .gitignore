@@ -22,4 +22,4 @@
 hs_err_pid*
 
 #Scripts 
-src/com/br/capitalcoding/scripts/
+src/com/br/capitalcoding/scripts/*.java
